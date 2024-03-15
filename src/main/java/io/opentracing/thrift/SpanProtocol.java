@@ -106,7 +106,7 @@ public class SpanProtocol extends TProtocolDecorator {
     level = 0;
 
     Span span = tracer.buildSpan("thrift.call")
-        .withTag("resource_name", tMessage.name)
+        .withTag("resource.name", tMessage.name)
         .withTag(Tags.SPAN_KIND.getKey(), Tags.SPAN_KIND_CLIENT)
         .start();
     spanHolder.setSpan(span);
