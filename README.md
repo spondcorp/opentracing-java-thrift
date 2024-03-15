@@ -5,6 +5,8 @@ OpenTracing instrumentation for Apache Thrift.
 
 Forked and modified by [Spond](https://spond.com).
 
+Warning: The tests in this repository have not been updated to work with the changes made by Spond.
+
 pom.xml
 ```xml
 <dependency>
@@ -25,7 +27,7 @@ This fork has been modified with the ability to publish new versions to a [Code 
 
 Publishing a new version to code artifact can be done manually with the Maven command:
 ```
-./mvnw deploy
+./mvnw deploy -DskipTests
 ```
 This command requires the environment variables `CODEARTIFACT_REPO` and `CODEARTIFACT_AUTH_TOKEN` to be set.
 - `CODEARTIFACT_REPO`: The address of the code artifact repository to publish to
