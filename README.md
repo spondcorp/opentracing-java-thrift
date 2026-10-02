@@ -5,8 +5,6 @@ OpenTracing instrumentation for Apache Thrift.
 
 Forked and modified by [Spond](https://spond.com).
 
-Warning: The tests in this repository have not been updated to work with the changes made by Spond.
-
 pom.xml
 ```xml
 <dependency>

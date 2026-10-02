@@ -633,7 +633,10 @@ public class TracingTest {
       Object spanKind = mockSpan.tags().get(Tags.SPAN_KIND.getKey());
       assertTrue(spanKind.equals(Tags.SPAN_KIND_CLIENT) || spanKind.equals(Tags.SPAN_KIND_SERVER));
       assertEquals(SpanDecorator.COMPONENT_NAME, mockSpan.tags().get(Tags.COMPONENT.getKey()));
-      assertEquals(name, mockSpan.operationName());
+      String expectedOperationName =
+          spanKind.equals(Tags.SPAN_KIND_CLIENT) ? "thrift.call" : "thrift.operation";
+      assertEquals(expectedOperationName, mockSpan.operationName());
+      assertEquals(name, mockSpan.tags().get("resource.name"));
       assertEquals(name, mockSpan.tags().get("message.name"));
       if (spanKind.equals(Tags.SPAN_KIND_CLIENT)) {
         assertEquals(messageTypeClient, mockSpan.tags().get(SpanDecorator.MESSAGE_TYPE));
