@@ -1,0 +1,33 @@
+version: 2.1
+
+jobs:
+  build_test:
+    docker:
+      # JDK 20+ can no longer compile for the pom's Java 7 release target.
+      - image: cimg/openjdk:17.0.7
+    steps:
+      - checkout
+      - run:
+          name: Install Thrift compiler
+          command: |
+            sudo apt-get update -qq
+            sudo apt-get install -y -qq thrift-compiler
+            thrift --version
+      - restore_cache:
+          keys:
+            - m2-{{ checksum "pom.xml" }}
+            - m2-
+      - run:
+          name: Build and test
+          command: ./mvnw -B verify
+      - save_cache:
+          key: m2-{{ checksum "pom.xml" }}
+          paths:
+            - ~/.m2
+      - store_test_results:
+          path: target/surefire-reports
+
+workflows:
+  build_test:
+    jobs:
+      - build_test
