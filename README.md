@@ -25,7 +25,7 @@ This fork has been modified with the ability to publish new versions to a [Code 
 
 Publishing a new version to code artifact can be done manually with the Maven command:
 ```
-./mvnw deploy -DskipTests
+./mvnw -s .settings.xml deploy -DskipTests
 ```
 This command requires the environment variables `CODEARTIFACT_REPO` and `CODEARTIFACT_AUTH_TOKEN` to be set.
 - `CODEARTIFACT_REPO`: The address of the code artifact repository to publish to

@@ -5,7 +5,7 @@ Spond's fork of [opentracing-contrib/java-thrift](https://github.com/opentracing
 ## Prerequisites
 
 - JDK 17. The pom compiles for Java 7, which JDK 20+ can no longer target.
-- The `thrift` compiler on `PATH`: the build generates test sources from `src/test/thrift/`.
+- The `thrift` compiler on `PATH`: the build generates test sources from `src/test/thrift/`. Use the version CI installs (Ubuntu's `thrift-compiler`); much newer compilers generate code that may not compile against the pom's `libthrift`.
 
 ## Commands
 
